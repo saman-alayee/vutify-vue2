@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.link{text-decoration: none; color: #303030;}
+.pointer{cursor: pointer;}
+.application-animation{
+    animation: 1s applicationAnimation;
+}
+@keyframes applicationAnimation {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
