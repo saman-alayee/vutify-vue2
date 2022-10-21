@@ -71,13 +71,14 @@ export default {
   methods: {
     validate() {
          axios
-          .post(`https://api.freerealapi.com/auth/login/`, {
+          .post(`https://reqres.in/api/register/`, {
             email: this.email,
             password: this.password,
           })
           .then((response) => {
-            this.$store.commit("login/login", response.data.token);
-            this.$router.push("/home");
+            // this.$store.commit("login/login", response.data.token);
+            // this.$router.push("/home");
+            console.log(response)
 
           })
           .catch();
