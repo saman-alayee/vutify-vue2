@@ -12,6 +12,7 @@ const routes = [
         components: {
             default: () => import('@/views/home/TheIndex.vue'),
             Navigation: () => import('@/layout/TheNavbar.vue'),
+            Footer: () => import('@/layout/TheFooter.vue'),
         },
     },
     {
@@ -20,6 +21,7 @@ const routes = [
         components: {
             default: () => import('@/views/login/TheIndex.vue'),
             Navigation: () => import('@/layout/TheNavbar.vue'),
+            Footer: () => import('@/layout/TheFooter.vue'),
         },
     },
 ];

@@ -1,136 +1,82 @@
 <template>
-	<div class="chart-container">
-		<LineChartGenerator
-			:chart-options="chartOptions"
-			:chart-data="chartData"
-			:chart-id="chartId"
-			:dataset-id-key="datasetIdKey"
-			:plugins="plugins"
-			:css-classes="cssClasses"
-			:styles="styles"
-			:width="width"
-			:height="height"
-		/>
-	</div>
+  <Doughnut
+    :chart-options="chartOptions"
+    :chart-data="chartData"
+    :chart-id="chartId"
+    :dataset-id-key="datasetIdKey"
+    :plugins="plugins"
+    :css-classes="cssClasses"
+    :styles="styles"
+    :width="width"
+    :height="height"
+  />
 </template>
 
 <script>
-import { Line as LineChartGenerator } from 'vue-chartjs/legacy';
+import { Doughnut } from 'vue-chartjs/legacy'
 
 import {
-	Chart as ChartJS,
-	Title,
-	Tooltip,
-	Legend,
-	LineElement,
-	LinearScale,
-	CategoryScale,
-	PointElement,
-} from 'chart.js';
+  Chart as ChartJS,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+  CategoryScale
+} from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, LineElement, LinearScale, CategoryScale, PointElement);
+ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
 
 export default {
-	name: 'LineChart',
-	components: {
-		LineChartGenerator,
-	},
-	props: {
-		chartOptions: {
-			type: String,
-		},
-		chartData: {
-			type: String,
-		},
-		chartId: {
-			type: String,
-			default: 'line-chart',
-		},
-		datasetIdKey: {
-			type: String,
-			default: 'label',
-		},
-		width: {
-			type: Number,
-			default: 400,
-		},
-		height: {
-			type: Number,
-			default: 400,
-		},
-		cssClasses: {
-			default: '',
-			type: String,
-		},
-		styles: {
-			type: Object,
-			default: () => {},
-		},
-		plugins: {
-			type: Array,
-			default: () => [],
-		},
-	},
-	data() {
-		return {
-			// chartData: {
-			// 	labels: [
-			// 		'00',
-			// 		'01',
-			// 		'03',
-			// 		'04',
-			// 		'05',
-			// 		'06',
-			// 		'07',
-			// 		'08',
-			// 		'09',
-			// 		'10',
-			// 		'11',
-			// 		'12',
-			// 		'13',
-			// 		'14',
-			// 	],
-			// 	datasets: [
-			// 		{
-			// 			label: 'لایک',
-			// 			pointRadius: '0',
-			// 			data: [40, 39, 10, 40, 39, 80, 40, 21, 33, 45, 76, 88, 21, 43],
-			// 			borderColor: '#4461F2',
-			// 			tension: 0.5,
-			// 		},
-			// 		{
-			// 			label: 'فالور',
-			// 			pointRadius: '0',
-			// 			data: [23, 45, 65, 66, 33, 7, 2, 21, 43, 15, 21, 90, 21, 23],
-			// 			borderColor: '#FCBF00',
-			// 			tension: 0.5,
-			// 			display: false,
-			// 		},
-			// 	],
-			// },
-			// chartOptions: {
-			// 	responsive: true,
-			// 	maintainAspectRatio: false,
-			// 	scales: {
-			// 		y: {
-			// 			grid: {
-			// 				drawBorder: false,
-			// 				color: '#fff',
-			// 			},
-			// 		},
-			// 		x: {
-			// 			grid: {
-			// 				drawBorder: false,
-			// 				color: '#fff',
-			// 			},
-			// 		},
-			// 	},
-			// },
-		};
-	},
-};
+  name: 'DoughnutChart',
+  components: {
+    Doughnut
+  },
+  props: {
+    chartId: {
+      type: String,
+      default: 'doughnut-chart'
+    },
+    datasetIdKey: {
+      type: String,
+      default: 'label'
+    },
+    width: {
+      type: Number,
+      default: 400
+    },
+    height: {
+      type: Number,
+      default: 400
+    },
+    cssClasses: {
+      default: '',
+      type: String
+    },
+    styles: {
+      type: Object,
+      default: () => {}
+    },
+    plugins: {
+      type: Array,
+      default: () => []
+    }
+  },
+  data() {
+    return {
+      chartData: {
+        labels: ['All Sale', 'All Buy', '1 Year Sale', '1 Year Buy'],
+        datasets: [
+          {
+            backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+            data: [60, 20, 80, 10]
+          }
+        ]
+      },
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    }
+  }
+}
 </script>
-
-<style lang="scss" scoped>
-
-</style>
